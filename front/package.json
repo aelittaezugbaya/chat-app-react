@@ -1,0 +1,30 @@
+{
+  "name": "chat-app-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --env development\"",
+    "build": "webpack --env production"
+  },
+  "author": "Aelitta Ezugbaya",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "babel": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^1.0.0",
+    "react": "^16.5.2",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.5.2",
+    "style-loader": "^0.23.1",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.4",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  }
+}
