@@ -1,5 +1,5 @@
 .side-menu {
-  background: #215165;
+  background: #068587;
   height: 100vh;
   color: white;
   padding: 20px;
@@ -8,9 +8,22 @@
 
 .list li {
   list-style-type: none;
+  cursor: pointer;
 }
 
 .list {
   margin: 0;
   padding: 0;
+}
+
+.menu-header {
+  color: #112f41;
+}
+
+.nickname {
+  color: #f2b134;
+}
+
+.header-hr {
+  background-color: #4fb99f;
 }

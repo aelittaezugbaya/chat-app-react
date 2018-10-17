@@ -5,7 +5,6 @@ export default class ListSideMenu extends React.Component {
   render() {
     const items = this.props.items.map(item => (
       <li>
-        {" "}
         {this.props.prefix} {item}
       </li>
     ));
