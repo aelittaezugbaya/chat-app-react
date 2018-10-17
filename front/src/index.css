@@ -1,0 +1,16 @@
+.side-menu {
+  background: #215165;
+  height: 100vh;
+  color: white;
+  padding: 20px;
+  font-size: 18px;
+}
+
+.list li {
+  list-style-type: none;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+}
