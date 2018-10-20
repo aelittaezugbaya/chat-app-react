@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, PageHeader } from "react-bootstrap";
+import { PageHeader } from "react-bootstrap";
 
 export default class ListSideMenu extends React.Component {
   render() {

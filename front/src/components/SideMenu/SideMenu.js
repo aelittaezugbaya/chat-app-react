@@ -1,9 +1,9 @@
 import React from "react";
-import { Col, PageHeader } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import ListSideMenu from "./ListSideMeni";
 import HeaderSideMenu from "./HeaderSideMenu";
 
-export default class App extends React.Component {
+export default class SideMenu extends React.Component {
   render() {
     return (
       <Col md={2} className="side-menu">

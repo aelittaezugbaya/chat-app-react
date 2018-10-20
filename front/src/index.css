@@ -27,3 +27,25 @@
 .header-hr {
   background-color: #4fb99f;
 }
+
+.main-part {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group-btn > .btn {
+  z-index: 2;
+  margin-left: -1px;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.dialog-container {
+  flex: 1;
+}
+.input-container {
+}
