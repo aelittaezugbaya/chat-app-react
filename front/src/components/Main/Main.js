@@ -1,17 +1,17 @@
 import React from "react";
-import { Col } from "react-bootstrap";
-import InputContainer from "./InputContainer";
-import ChatList from "./ChatList";
+import Menu from "../SideMenu/SideMenu";
+import ChatBox from "./ChatBox";
+import { Grid, Row } from "react-bootstrap";
 
-export default class Main extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
-      <Col md={10} className="main-part ">
-        <div className="dialog-container">
-          <ChatList />
-        </div>
-        <InputContainer />
-      </Col>
+      <Grid fluid={true}>
+        <Row>
+          <Menu />
+          <ChatBox room="general" />
+        </Row>
+      </Grid>
     );
   }
 }
