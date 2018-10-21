@@ -59,3 +59,7 @@
 .chat > li {
   list-style-type: none;
 }
+
+.new-user-container {
+  margin-top: 10vh;
+}
