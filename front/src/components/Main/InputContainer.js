@@ -1,5 +1,6 @@
 import React from "react";
 import { FormGroup, InputGroup, Button, FormControl } from "react-bootstrap";
+
 export default class InputContainer extends React.Component {
   render() {
     return (

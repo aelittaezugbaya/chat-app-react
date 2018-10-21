@@ -1,7 +1,7 @@
 import React from "react";
 import ChatListItem from "./ChatListItem";
 
-export default class Main extends React.Component {
+export default class ChatList extends React.Component {
   render() {
     const chatMessages = [
       { name: "Aeliita", message: "Hi John!" },
