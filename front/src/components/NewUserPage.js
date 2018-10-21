@@ -6,11 +6,14 @@ import {
   HelpBlock
 } from "react-bootstrap";
 
-export default class NewUserPage extends React.Component {
+import { withRouter } from "react-router-dom";
+
+class NewUserPage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
     this.handleChange = this.handleChange.bind(this);
+    this.submit = this.submit.bind(this);
 
     this.state = {
       value: ""
@@ -34,10 +37,14 @@ export default class NewUserPage extends React.Component {
     });
   }
 
+  submit() {
+    this.props.history.push(`/user/${this.state.value}`);
+  }
+
   render() {
     return (
       <div className="new-user-container container">
-        <form>
+        <form onSubmit={this.submit}>
           <FormGroup>
             <ControlLabel>Type nickname</ControlLabel>
             <FormControl
@@ -55,3 +62,5 @@ export default class NewUserPage extends React.Component {
     );
   }
 }
+
+export default withRouter(NewUserPage);
