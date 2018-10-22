@@ -12,10 +12,7 @@ class ListSideMenu extends React.Component {
   }
 
   onClickDialog(e) {
-    console.log(e.target.id);
-    console.log(e.target.className);
-    console.log(this.props.currentDialog);
-    console.log(this.props.user);
+    this.props.chooseDialog(e.target.id);
   }
   render() {
     const items = this.props.items.map(item => (
@@ -45,7 +42,7 @@ const mapDispatchToProps = dispatch => ({
   chooseDialog: dialog =>
     dispatch({
       type: actions.CHOOSE_DIALOG,
-      currentDialog: dialog
+      payload: dialog
     })
 });
 
