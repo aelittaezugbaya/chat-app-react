@@ -6,6 +6,9 @@ import {
   HelpBlock
 } from "react-bootstrap";
 
+import { connect } from "react-redux";
+import actions from "../redux/actions";
+
 import { withRouter } from "react-router-dom";
 
 class NewUserPage extends React.Component {
@@ -38,6 +41,7 @@ class NewUserPage extends React.Component {
   }
 
   submit() {
+    this.props.addUser(this.state.value);
     this.props.history.push(`/user/${this.state.value}`);
   }
 
@@ -63,4 +67,19 @@ class NewUserPage extends React.Component {
   }
 }
 
-export default withRouter(NewUserPage);
+const mapStateToProps = ({ user }) => ({
+  user
+});
+
+const mapDispatchToProps = dispatch => ({
+  addUser: user =>
+    dispatch({
+      type: actions.ADD_USER,
+      payload: user
+    })
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(NewUserPage));

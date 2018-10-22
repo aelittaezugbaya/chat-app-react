@@ -2,9 +2,15 @@ import React from "react";
 import { Col } from "react-bootstrap";
 import ListSideMenu from "./ListSideMeni";
 import HeaderSideMenu from "./HeaderSideMenu";
+import actions from "../../redux/actions";
 
-export default class SideMenu extends React.Component {
+import { connect } from "react-redux";
+
+class SideMenu extends React.Component {
   render() {
+    if (!this.props.currentDialog) {
+      this.props.chooseDialog("general");
+    }
     return (
       <Col md={2} className="side-menu">
         <HeaderSideMenu nickname="aelittae" />
@@ -22,3 +28,21 @@ export default class SideMenu extends React.Component {
     );
   }
 }
+
+const mapStateToProps = ({ user, currentDialog }) => ({
+  user,
+  currentDialog
+});
+
+const mapDispatchToProps = dispatch => ({
+  chooseDialog: dialog =>
+    dispatch({
+      type: actions.CHOOSE_DIALOG,
+      payload: dialog
+    })
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SideMenu);
