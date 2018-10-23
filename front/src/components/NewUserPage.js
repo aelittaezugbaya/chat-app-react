@@ -23,6 +23,18 @@ class NewUserPage extends React.Component {
     };
   }
 
+  componentDidMount() {
+    window
+      .fetch("/api/test", {
+        method: "GET",
+        headers: {
+          "Content-Type": "text/plain"
+        }
+      })
+      .then(res => res.json())
+      .then(res => console.log(res));
+  }
+
   handleChange() {
     const value = this.nickname.value;
     const length = value.length;
