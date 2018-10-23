@@ -2,6 +2,7 @@ import Koa from "koa";
 import Router from "koa-router";
 
 import pgp from "pg-promise";
+import websockets from "./sockets";
 
 const postgresInitOptions = {
   connect: client => {
@@ -29,6 +30,8 @@ const db = pgp(postgresInitOptions)(postgresConnectionOptions);
 
 const koa = new Koa();
 const app = new Router();
+
+websockets(koa);
 
 app.get("/api/postgres_connection_test", ctx => {
   return db
