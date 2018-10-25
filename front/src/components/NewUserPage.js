@@ -6,6 +6,11 @@ import {
   HelpBlock
 } from "react-bootstrap";
 
+import socketIOClient from "socket.io-client";
+const endpoint = `${window.location.hostname}:8000`;
+
+const socket = socketIOClient(endpoint);
+
 import { connect } from "react-redux";
 import actions from "../redux/actions";
 
@@ -24,30 +29,20 @@ class NewUserPage extends React.Component {
   }
 
   componentDidMount() {
-    window
-      .fetch("/api/test", {
-        method: "GET",
-        headers: {
-          "Content-Type": "text/plain"
-        }
-      })
-      .then(res => res.json())
-      .then(res => console.log(res));
+    // window
+    //   .fetch("/api/postgres_connection_test", {
+    //     method: "GET",
+    //     headers: {
+    //       "Content-Type": "text/plain"
+    //     }
+    //   })
+    //   .then(res => res.json())
+    //   .then(res => console.log(res));
   }
 
   handleChange() {
     const value = this.nickname.value;
-    const length = value.length;
-    let status;
-    if (length > 10) {
-      status = "Success";
-    } else if (length == 0) {
-      status = null;
-    } else if (length <= 10) {
-      status = "Such nickname exists";
-    }
     this.setState({
-      status,
       value
     });
   }

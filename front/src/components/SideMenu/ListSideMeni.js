@@ -8,6 +8,9 @@ import { connect } from "react-redux";
 class ListSideMenu extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      channels: []
+    };
     this.onClickDialog = this.onClickDialog.bind(this);
   }
 
@@ -15,19 +18,25 @@ class ListSideMenu extends React.Component {
     this.props.chooseDialog(e.target.id);
   }
   render() {
-    const items = this.props.items.map(item => (
-      <li
-        id={item}
-        className={
-          item == this.props.currentDialog
-            ? "active-dialog"
-            : "not-active-dialog"
-        }
-        onClick={this.onClickDialog}
-      >
-        {this.props.prefix} {item}
-      </li>
-    ));
+    const items = this.props.items
+      ? this.props.items.map(item => (
+          <li
+            id={item}
+            className={
+              item == this.props.currentDialog
+                ? "active-dialog"
+                : "not-active-dialog"
+            }
+            onClick={this.onClickDialog}
+          >
+            {this.props.prefix} {item}
+          </li>
+        ))
+      : [
+          <li id="nothing" className="no-users">
+            There is no active users(
+          </li>
+        ];
     return (
       <div>
         <PageHeader>

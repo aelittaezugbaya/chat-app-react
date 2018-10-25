@@ -52,7 +52,8 @@
 
 .chat-list-container {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  justify-content: flex-end;
   height: 100%;
 }
 
@@ -70,4 +71,9 @@
 
 .not-active-dialog {
   color: #d4d4d4;
+}
+
+.no-users {
+  color: #d4d4d4;
+  cursor: none;
 }
