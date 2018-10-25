@@ -15,7 +15,6 @@ class ChatList extends React.Component {
   }
   subscribe() {
     socket.on(`send message ${this.props.currentDialog}`, data => {
-      console.log(data);
       this.setState({
         messages: [
           ...this.state.messages,
@@ -39,7 +38,6 @@ class ChatList extends React.Component {
         this.setState({
           messages: data
         });
-        console.log(data);
       });
   }
 

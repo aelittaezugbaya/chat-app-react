@@ -4,22 +4,10 @@ import Router from "koa-router";
 import bodyParser from "koa-body-parser";
 import websockets from "./sockets";
 
+import pgp from "pg-promise";
+
 const koa = new Koa();
 const app = new Router();
-
-koa.use(bodyParser());
-
-koa.use(async (ctx, next) => {
-  // the parsed body will store in ctx.request.body
-  // if nothing was parsed, body will be an empty object {}
-  ctx.body = ctx.request.body && JSON.parse(ctx.request.body);
-  await next();
-});
-
-websockets(koa);
-
-//MOVE TO SEPARETE FILE
-import pgp from "pg-promise";
 
 const postgresInitOptions = {
   connect: client => {
@@ -45,9 +33,21 @@ const postgresConnectionOptions = {
 
 const db = pgp(postgresInitOptions)(postgresConnectionOptions);
 
+koa.use(bodyParser());
+
+koa.use(async (ctx, next) => {
+  // the parsed body will store in ctx.request.body
+  // if nothing was parsed, body will be an empty object {}
+  ctx.body = ctx.request.body && JSON.parse(ctx.request.body);
+  await next();
+});
+
+websockets(koa, db);
+
+//MOVE TO SEPARETE FILE
+
 app.get("/api/test", ctx => {
   ctx.status = 200;
-  console.log("looolk");
   ctx.body = [
     {
       id: 1,
@@ -68,7 +68,6 @@ app.get("/api/test", ctx => {
 });
 
 app.post("/api/saveMessage", async ctx => {
-  console.log(ctx.body.table);
   await db
     .query(
       `INSERT INTO "${ctx.body.table}" ("user",message) VALUES ('${
@@ -80,11 +79,9 @@ app.post("/api/saveMessage", async ctx => {
 });
 
 app.get("/api/getMessages/:table", async ctx => {
-  console.log("here");
   await db
     .query(`SELECT "user", message FROM "${ctx.params.table}"`)
     .then(data => {
-      console.log(data);
       ctx.status = 200;
       ctx.body = data;
     })

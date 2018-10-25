@@ -17,8 +17,6 @@ class InputContainer extends React.Component {
 
   saveMessage(msg) {
     const table = `${this.props.currentDialog}Messages`;
-    console.log(table);
-    console.log(msg);
     window
       .fetch(`/api/saveMessage/`, {
         method: "POST",

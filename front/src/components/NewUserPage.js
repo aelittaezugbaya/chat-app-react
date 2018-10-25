@@ -28,18 +28,6 @@ class NewUserPage extends React.Component {
     };
   }
 
-  componentDidMount() {
-    // window
-    //   .fetch("/api/postgres_connection_test", {
-    //     method: "GET",
-    //     headers: {
-    //       "Content-Type": "text/plain"
-    //     }
-    //   })
-    //   .then(res => res.json())
-    //   .then(res => console.log(res));
-  }
-
   handleChange() {
     const value = this.nickname.value;
     this.setState({
@@ -49,7 +37,7 @@ class NewUserPage extends React.Component {
 
   submit() {
     this.props.addUser(this.state.value);
-    this.props.history.push(`/user/${this.state.value}`);
+    this.props.history.push(`/${this.state.value}`);
   }
 
   render() {

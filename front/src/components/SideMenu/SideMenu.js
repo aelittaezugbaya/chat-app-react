@@ -22,7 +22,6 @@ class SideMenu extends React.Component {
   componentWillMount() {
     socket.emit("get current channels");
     socket.on("get current channels", data => {
-      console.log(data);
       const channels = data ? data.map(channel => channel.name) : [];
       this.setState({
         channels

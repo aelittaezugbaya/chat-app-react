@@ -1,32 +1,7 @@
 const http = require("http");
 const socketIo = require("socket.io");
-import pgp from "pg-promise";
 
-const postgresInitOptions = {
-  connect: client => {
-    const cp = client.connectionParameters;
-    console.log("Connected to database", cp.database);
-  },
-  disconnect: client => {
-    const cp = client.connectionParameters;
-    console.log("Disconnecting from database", cp.database);
-  },
-  error: err => {
-    console.error("Database error", err);
-  }
-};
-
-const postgresConnectionOptions = {
-  host: "localhost",
-  port: 5432,
-  database: "chatdb"
-  //user: 'if-needed',
-  //password: 'if-needed'
-};
-
-const db = pgp(postgresInitOptions)(postgresConnectionOptions);
-
-function websockets(app) {
+function websockets(app, db) {
   const server = http.createServer(app);
   const io = socketIo.listen(server);
   const connections = [];
@@ -58,7 +33,6 @@ function websockets(app) {
       });
     });
     socket.on("send message", data => {
-      console.log(`send message ${data.dialog}`);
       io.sockets.emit(`send message ${data.dialog}`, {
         name: data.user,
         msg: data.msg

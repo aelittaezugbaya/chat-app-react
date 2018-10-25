@@ -20,7 +20,7 @@ export default class App extends React.Component {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={NewUserPage} />
-            <Route path="/user/:nickname" component={Main} />
+            <Route path="/:nickname" component={Main} />
           </Switch>
         </BrowserRouter>
       </Provider>
